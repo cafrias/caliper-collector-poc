@@ -1,0 +1,29 @@
+{
+  "@context": "http://purl.imsglobal.org/ctx/caliper/v1p2",
+  "id": "urn:uuid:7e10e4f3-a0d8-4430-95bd-783ffae4d916",
+  "type": "ToolUseEvent",
+  "profile": "ToolUseProfile",
+  // We can get the user id from the `actor`
+  "actor": "https://example.edu/users/554433", // /users/{userId}
+  "action": "Used",
+  // We can get the activity id from the `object`
+  "object": "https://example.edu/activity/554466", // /activity/{activityId}
+  "eventTime": "2019-11-15T10:15:00.000Z",
+  "generated": {
+    "id": "urn:uuid:7e10e4f3-a0d8-4430-95bd-783ffae4d912",
+    "type": "AggregateMeasureCollection",
+    "items": [
+      {
+        "id": "urn:uuid:21c3f9f2-a9ef-4f65-bf9a-0699ed85e2c7",
+        "type": "AggregateMeasure",
+        "metric": "MinutesOnTask",
+        "name": "Minutes On Task",
+        "metricValue": 1, // This is an aggregate value of the time spent on the activity
+        "startedAtTime": "2019-11-15T10:15:00.000Z",
+        "endedAtTime": "2019-11-15T10:16:00.000Z"
+      }
+    ]
+  },
+  // We can get the class id from the `group`
+  "group": "https://example.edu/classes/201601" // /classes/{classId}
+}

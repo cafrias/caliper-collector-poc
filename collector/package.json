@@ -7,7 +7,8 @@
     "node": ">=20"
   },
   "scripts": {
-    "test": "node --test --require ts-node/register ./src/**/*.test.ts"
+    "test": "node --test --require ts-node/register ./src/**/*.test.ts",
+    "test:only": "node --test --require ts-node/register"
   },
   "keywords": [],
   "author": "",
