@@ -1,10 +1,20 @@
-import fs from "fs/promises";
 import { TimeSpent } from "../models/time-spent";
-import { TIMESPENT_STORAGE_PATH } from "../../config";
+import { WithDB } from "../types";
 
-export function saveTimeSpent(timeSpent: TimeSpent): Promise<void> {
-  return fs.appendFile(
-    TIMESPENT_STORAGE_PATH,
-    `${timeSpent.timestamp},${timeSpent.classId},${timeSpent.userId},${timeSpent.activityId},${timeSpent.value}\n`
+export async function saveTimeSpent(
+  timeSpent: TimeSpent,
+  { db }: WithDB
+): Promise<void> {
+  await db.query(
+    "INSERT INTO time_spent (registered_at, user_id, class_id, total_minutes, activity_id) VALUES ($1, $2, $3, $4, $5)",
+    [
+      timeSpent.timestamp,
+      timeSpent.userId,
+      timeSpent.classId,
+      timeSpent.value,
+      timeSpent.activityId,
+    ]
   );
+
+  return;
 }

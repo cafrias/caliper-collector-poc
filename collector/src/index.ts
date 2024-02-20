@@ -1,5 +1,6 @@
 import Fastify from "fastify";
 import rawBody from "fastify-raw-body";
+import fastifyPostgres from "@fastify/postgres";
 import { exit } from "node:process";
 import { saveToDataLake } from "./data-lake/data-lake";
 import { Envelope } from "./models/envelope";
@@ -10,6 +11,10 @@ const fastify = Fastify({
 });
 
 fastify.register(rawBody);
+
+fastify.register(fastifyPostgres, {
+  connectionString: "postgres://postgres@localhost/caliper-aggregator",
+});
 
 fastify.after((err) => {
   if (err) {
@@ -29,7 +34,7 @@ fastify.after((err) => {
 
       const result = await Promise.allSettled([
         saveToDataLake(envelope.sendTime, request.rawBody.toString()),
-        processEnvelope(envelope),
+        processEnvelope(envelope, { db: fastify.pg }),
       ]);
 
       result.forEach((res) => {

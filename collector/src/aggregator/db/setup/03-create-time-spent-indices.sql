@@ -1,0 +1,1 @@
+CREATE INDEX time_spent_registered_class ON time_spent (registered_at, class_id);
