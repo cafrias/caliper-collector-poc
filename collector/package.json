@@ -7,6 +7,7 @@
     "node": ">=20"
   },
   "scripts": {
+    "dev": "node -r ts-node/register src/index.ts",
     "test": "node --test --require ts-node/register ./src/**/*.test.ts",
     "test:only": "node --test --require ts-node/register"
   },
@@ -14,12 +15,14 @@
   "author": "",
   "license": "ISC",
   "devDependencies": {
+    "@types/node": "^20.11.19",
     "@types/uuid": "^9.0.8",
     "ts-node": "^10.9.2",
     "typescript": "^5.3.3"
   },
   "dependencies": {
     "fastify": "^4.26.1",
+    "fastify-raw-body": "^4.3.0",
     "uuid": "^9.0.1"
   }
 }
