@@ -13,5 +13,6 @@ PostgreSQL shouldn't cause any issue for the aggregations.
 
 ## TODO
 
-[] Include PostgreSQL database for Aggregations
-[] Implement endpoint
+- Create UPSERT query:
+  - Conflict: registered_at, class_id, activity_id, user_id
+- Add fake data
