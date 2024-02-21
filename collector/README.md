@@ -13,6 +13,5 @@ PostgreSQL shouldn't cause any issue for the aggregations.
 
 ## TODO
 
-- Create UPSERT query:
-  - Conflict: registered_at, class_id, activity_id, user_id
 - Add fake data
+- Add aggregation query

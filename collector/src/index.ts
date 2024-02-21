@@ -43,13 +43,6 @@ fastify.after((err) => {
         }
       });
 
-      // Write to filesystem
-      // Here we'll store the Caliper Envelopes as they are received
-      // in the local filesystem. This can be later migrated to
-      // other tools like Hadoop for ETL.
-
-      // Aggregate data to database
-
       reply.code(201).send();
     },
   });
